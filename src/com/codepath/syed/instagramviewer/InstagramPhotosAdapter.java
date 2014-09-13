@@ -53,7 +53,6 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 			tvCaption.append(result);
 			tvCaption.append(" -- " + photo.caption);
 		}
-		
 
 		if(imageProfile != null){
 			// resizing the image, insert bitmap into the imageView
@@ -72,6 +71,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 				tvlikes.setText(" " + photo.likesCount + " likes");
 			}
 		}
+		
 		// set the image height before loading
 		if(imagePhoto != null){
 			imagePhoto.getLayoutParams().height = photo.imageHeight; // first set the height

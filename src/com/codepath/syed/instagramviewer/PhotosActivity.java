@@ -89,6 +89,7 @@ public class PhotosActivity extends Activity {
     					InstagramPhoto photo = new InstagramPhoto();
     					photo.username = photoJSON.getJSONObject("user").getString("username");
     					photo.imageProfileUrl = photoJSON.getJSONObject("user").getString("profile_picture");
+    					
     					// its a work around... 
     					try{
     						JSONObject captionJSON = photoJSON.getJSONObject("caption");
