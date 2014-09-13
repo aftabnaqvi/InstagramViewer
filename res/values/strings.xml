@@ -7,4 +7,5 @@
 	<string name="popular_photos_caption">Popular Photos</string>
 	<string name="caption_default_text">This is a default caption</string>
 	<string name="likes_default_text">This is default likes text</string>
+	<string name="username_default_text">This is defualt user name</string>
 </resources>

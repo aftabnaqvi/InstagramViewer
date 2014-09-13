@@ -36,10 +36,13 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		}
 		
 		// Step-3 - Lookup the subview within the template
+		ImageView imageProfile = (ImageView)convertView.findViewById(R.id.imageProfile);
+		TextView tvUsername = (TextView)convertView.findViewById(R.id.tvUserName);
 		TextView tvCaption = (TextView)convertView.findViewById(R.id.tvCaption);
 		TextView tvlikes = (TextView)convertView.findViewById(R.id.tvLikes);
 		ImageView imagePhoto = (ImageView)convertView.findViewById(R.id.imagePhoto);
 		ImageView imageLike = (ImageView)convertView.findViewById(R.id.imageLike);
+		
 		// Step-4 - Populate the subview ( textfield, imageView with the correct data)
 		if(tvCaption!=null){
 			String userName = photo.username;
@@ -52,6 +55,14 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 		}
 		
 
+		if(imageProfile != null){
+			// resizing the image, insert bitmap into the imageView
+			Picasso.with(getContext()).load(photo.imageProfileUrl).into(imageProfile);
+		}
+		
+		if(tvUsername != null){
+			tvUsername.setText(photo.username);
+		}
 		
 		if(tvlikes != null && imageLike != null){
 			imageLike.setImageResource(0);

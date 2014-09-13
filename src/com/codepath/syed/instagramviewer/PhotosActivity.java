@@ -88,9 +88,19 @@ public class PhotosActivity extends Activity {
     					JSONObject photoJSON = photosJSON.getJSONObject(i);//1,2,3
     					InstagramPhoto photo = new InstagramPhoto();
     					photo.username = photoJSON.getJSONObject("user").getString("username");
-    					if(photoJSON.getJSONObject("caption") != null){
-    						photo.caption = photoJSON.getJSONObject("caption").getString("text");
-    					}
+    					photo.imageProfileUrl = photoJSON.getJSONObject("user").getString("profile_picture");
+    					// its a work around... 
+    					try{
+    						JSONObject captionJSON = photoJSON.getJSONObject("caption");
+	    					if( captionJSON != null){
+	    						photo.caption = captionJSON.getString("text");
+	    					
+	    					}
+	    				}catch(JSONException e){
+	    					Log.i("INFO: ", photoJSON.toString());
+	    					e.printStackTrace();
+	    				}
+    					
     					photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
     					photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
     					photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
@@ -102,8 +112,6 @@ public class PhotosActivity extends Activity {
     				// in case of error...
     				e.printStackTrace();
     			}
-    		
-    			
     		}
     	});
     }
