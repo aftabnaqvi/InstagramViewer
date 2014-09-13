@@ -17,3 +17,5 @@ Completed user stories:
  Optional: Display like count, user profile image.
  
 Walkthrough of all user stories:
+
+https://github.com/aftabnaqvi/InstagramViewer/blob/master/InstagramViewer1.0.gif
