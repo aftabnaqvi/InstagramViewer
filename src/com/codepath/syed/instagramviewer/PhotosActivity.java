@@ -91,16 +91,9 @@ public class PhotosActivity extends Activity {
     					photo.imageProfileUrl = photoJSON.getJSONObject("user").getString("profile_picture");
     					
     					// its a work around... 
-    					try{
-    						JSONObject captionJSON = photoJSON.getJSONObject("caption");
-	    					if( captionJSON != null){
-	    						photo.caption = captionJSON.getString("text");
-	    					
-	    					}
-	    				}catch(JSONException e){
-	    					Log.i("INFO: ", photoJSON.toString());
-	    					e.printStackTrace();
-	    				}
+    					if (!photoJSON.isNull("caption")) {
+    						photo.caption = photoJSON.getJSONObject("caption").getString("text");
+    					}
     					
     					photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
     					photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
