@@ -97,6 +97,7 @@ public class PhotosActivity extends Activity {
     					
     					photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
     					photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
+    					photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
     					photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
     					photos.add(photo);
     				}
