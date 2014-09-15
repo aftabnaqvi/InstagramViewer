@@ -9,6 +9,89 @@ package com.codepath.syed.instagramviewer;
 
 public final class R {
     public static final class attr {
+        /**  Specifies whether or not to draw a circular border around the image. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border=0x7f010000;
+        /**  Specifies the color of the border draw around the image. (if enabled) 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_color=0x7f010001;
+        /**  Makes the border this pixels wide. (if enabled) 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int border_width=0x7f010002;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int circularImageViewStyle=0x7f010008;
+        /**  Specifies whether or not to draw a selector on this view upon touch events. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selector=0x7f010003;
+        /**  Specifies the color of the selector draw on top of the image upon touch events. (if enabled) 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selector_color=0x7f010004;
+        /**  Specifies the color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) 
+         <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selector_stroke_color=0x7f010005;
+        /**  Makes the selector stroke drawn around the image upon touch events this pixels wide. (if enabled) 
+         <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selector_stroke_width=0x7f010006;
+        /**  Specifies whether or not to draw a shadow around your circular image. 
+         <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int shadow=0x7f010007;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -84,4 +167,192 @@ public final class R {
          */
         public static final int AppTheme=0x7f060001;
     }
+    public static final class styleable {
+        /**  CircularImageView for custom shape 
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CircularImageView_border com.codepath.syed.instagramviewer:border}</code></td><td> Specifies whether or not to draw a circular border around the image.</td></tr>
+           <tr><td><code>{@link #CircularImageView_border_color com.codepath.syed.instagramviewer:border_color}</code></td><td> Specifies the color of the border draw around the image.</td></tr>
+           <tr><td><code>{@link #CircularImageView_border_width com.codepath.syed.instagramviewer:border_width}</code></td><td> Makes the border this pixels wide.</td></tr>
+           <tr><td><code>{@link #CircularImageView_selector com.codepath.syed.instagramviewer:selector}</code></td><td> Specifies whether or not to draw a selector on this view upon touch events.</td></tr>
+           <tr><td><code>{@link #CircularImageView_selector_color com.codepath.syed.instagramviewer:selector_color}</code></td><td> Specifies the color of the selector draw on top of the image upon touch events.</td></tr>
+           <tr><td><code>{@link #CircularImageView_selector_stroke_color com.codepath.syed.instagramviewer:selector_stroke_color}</code></td><td> Specifies the color of the selector stroke drawn around the image upon touch events.</td></tr>
+           <tr><td><code>{@link #CircularImageView_selector_stroke_width com.codepath.syed.instagramviewer:selector_stroke_width}</code></td><td> Makes the selector stroke drawn around the image upon touch events this pixels wide.</td></tr>
+           <tr><td><code>{@link #CircularImageView_shadow com.codepath.syed.instagramviewer:shadow}</code></td><td> Specifies whether or not to draw a shadow around your circular image.</td></tr>
+           </table>
+           @see #CircularImageView_border
+           @see #CircularImageView_border_color
+           @see #CircularImageView_border_width
+           @see #CircularImageView_selector
+           @see #CircularImageView_selector_color
+           @see #CircularImageView_selector_stroke_color
+           @see #CircularImageView_selector_stroke_width
+           @see #CircularImageView_shadow
+         */
+        public static final int[] CircularImageView = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007
+        };
+        /**
+          <p>
+          @attr description
+           Specifies whether or not to draw a circular border around the image. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:border
+        */
+        public static final int CircularImageView_border = 0;
+        /**
+          <p>
+          @attr description
+           Specifies the color of the border draw around the image. (if enabled) 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:border_color
+        */
+        public static final int CircularImageView_border_color = 1;
+        /**
+          <p>
+          @attr description
+           Makes the border this pixels wide. (if enabled) 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:border_width
+        */
+        public static final int CircularImageView_border_width = 2;
+        /**
+          <p>
+          @attr description
+           Specifies whether or not to draw a selector on this view upon touch events. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:selector
+        */
+        public static final int CircularImageView_selector = 3;
+        /**
+          <p>
+          @attr description
+           Specifies the color of the selector draw on top of the image upon touch events. (if enabled) 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:selector_color
+        */
+        public static final int CircularImageView_selector_color = 4;
+        /**
+          <p>
+          @attr description
+           Specifies the color of the selector stroke drawn around the image upon touch events. Be sure to provide some opacity. (if enabled) 
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:selector_stroke_color
+        */
+        public static final int CircularImageView_selector_stroke_color = 5;
+        /**
+          <p>
+          @attr description
+           Makes the selector stroke drawn around the image upon touch events this pixels wide. (if enabled) 
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:selector_stroke_width
+        */
+        public static final int CircularImageView_selector_stroke_width = 6;
+        /**
+          <p>
+          @attr description
+           Specifies whether or not to draw a shadow around your circular image. 
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          <p>This is a private symbol.
+          @attr name com.codepath.syed.instagramviewer:shadow
+        */
+        public static final int CircularImageView_shadow = 7;
+        /** Attributes that can be used with a CustomCircularImageViewTheme.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #CustomCircularImageViewTheme_circularImageViewStyle com.codepath.syed.instagramviewer:circularImageViewStyle}</code></td><td></td></tr>
+           </table>
+           @see #CustomCircularImageViewTheme_circularImageViewStyle
+         */
+        public static final int[] CustomCircularImageViewTheme = {
+            0x7f010008
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.codepath.syed.instagramviewer.R.attr#circularImageViewStyle}
+          attribute's value can be found in the {@link #CustomCircularImageViewTheme} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.codepath.syed.instagramviewer:circularImageViewStyle
+        */
+        public static final int CustomCircularImageViewTheme_circularImageViewStyle = 0;
+    };
 }

@@ -17,11 +17,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.codepath.syed.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 	// View lookup cache
     private static class ViewHolder {
+    	//private CircularImageView imageProfile;
     	private ImageView imageProfile;
     	private TextView tvUsername;
     	private TextView tvLocation;
@@ -48,7 +50,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     		}
 
     		if(imageProfile != null){
-    			Picasso.with(context).load(photo.imageProfileUrl).fit().centerInside().into(imageProfile);
+    			Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
     		}
     		
     		if(tvUsername != null){
@@ -126,6 +128,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 			convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_photo, parent, false); // false mean don't attach
 			
 			// Step-3 - Lookup the subview within the template
+			//viewHolder.imageProfile = (CircularImageView)convertView.findViewById(R.id.imageProfile);
 			viewHolder.imageProfile = (ImageView)convertView.findViewById(R.id.imageProfile);
 			viewHolder.tvUsername = (TextView)convertView.findViewById(R.id.tvUserName);
 			//viewHolder.tvLocation = (TextView)convertView.findViewById(R.id.tvLocation);
