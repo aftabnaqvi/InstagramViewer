@@ -27,27 +27,27 @@
         android:textColor="#0f71b4"
         android:textSize="10sp" />
 
-    <!-- 
     <com.codepath.syed.circularimageview.CircularImageView
         android:id="@+id/imageProfile"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/tvLikes"
-        android:padding="2dp"
         android:src="@drawable/heart" 
         app:selector_color="#44FFBB33"
         app:selector_stroke_color="#88FF8800"
-        app:selector_stroke_width="2dp"/>  -->
+        app:selector_stroke_width="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"/>
 
-	<ImageView
+	<!--  <ImageView
         android:id="@+id/imageProfile"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_alignParentTop="true"
         android:layout_alignLeft="@+id/tvLikes"
         android:padding="2dp"
-        android:src="@drawable/heart" />
+        android:src="@drawable/heart" />  -->
 	
     <TextView
         android:id="@+id/tvUserName"
@@ -58,7 +58,7 @@
         android:layout_toRightOf="@+id/imageProfile"
         android:fontFamily="sans-serif-condensed"
         android:gravity="center_vertical"
-        android:paddingTop="2dp"
+        android:paddingTop="4dp"
         android:text="@string/username_default_text"
         android:textSize="10sp" />
 
@@ -69,7 +69,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageProfile"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_launcher" />
 
     <TextView
@@ -80,7 +80,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="14dp"
         android:textSize="8sp"
-        android:paddingBottom="4dp"
+        android:paddingBottom="8dp"
         android:layout_marginLeft="4dp"
         android:gravity="center_vertical"
         android:textColor="#0f71b4"
@@ -92,7 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvTime"
         android:layout_toLeftOf="@+id/tvTime"
-        android:paddingBottom="4dp"
+        android:paddingBottom="7dp"
         android:gravity="center_vertical"
         android:src="@drawable/clock_blue" />
 

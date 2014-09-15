@@ -356,7 +356,9 @@ public class CircularImageView extends ImageView
 	 */
 	public void refreshBitmapShader()
 	{
-		shader = new BitmapShader(Bitmap.createScaledBitmap(image, canvasSize, canvasSize, false), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+		if (image != null) {
+			shader = new BitmapShader(Bitmap.createScaledBitmap(image, canvasSize, canvasSize, false), Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+		}
 	}
 	
 	/**

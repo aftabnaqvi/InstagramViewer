@@ -23,8 +23,8 @@ import com.squareup.picasso.Picasso;
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 	// View lookup cache
     private static class ViewHolder {
-    	//private CircularImageView imageProfile;
-    	private ImageView imageProfile;
+    	private CircularImageView imageProfile;
+    	//private ImageView imageProfile;
     	private TextView tvUsername;
     	private TextView tvLocation;
     	private TextView tvCaption;
@@ -53,7 +53,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     		}
 
     		if(imageProfile != null){
-    			Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
+    			//Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
+    			Picasso.with(context).load(photo.imageProfileUrl).resize(imageProfile.getLayoutParams().width, 
+    					imageProfile.getLayoutParams().height).into(imageProfile);
     		}
     		
     		if(tvUsername != null){
@@ -84,7 +86,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			DisplayMetrics metrics = getDisplayMetrics();
     			imagePhoto.getLayoutParams().height = metrics.heightPixels/2 * photo.imageWidth/photo.imageHeight; // first set the height
     			imagePhoto.getLayoutParams().width = metrics.widthPixels; //  set the width
-    			
+  
     			// clear the image from the image view, it might be the recycled imageView...
     			// Reset the image from the recycle view
     			imagePhoto.setImageResource(0);
@@ -93,14 +95,12 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			// Background work: send a network request to the url, download the image bytes, covert into bitmap, 
     			// resizing the image, insert bitmap into the imageView
     			//Picasso.with(getContext()).load(photo.imageUrl).into(imagePhoto);
-    			//Picasso.with(getContext()).load(photo.imageUrl).resize(metrics.widthPixels,metrics.heightPixels/2).into(imagePhoto);
+    			Picasso.with(context).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).into(imagePhoto);
     			//Picasso.with(getContext()).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).centerInside().into(imagePhoto);
-    			Picasso.with(context).load(photo.imageUrl).fit().centerInside().into(imagePhoto);
+    			//Picasso.with(context).load(photo.imageUrl).fit().centerInside().into(imagePhoto);
     		}
     		
     		if(tvComments != null){
-    		;
-
     			SpannableString result =  new SpannableString("Comments:");
     			result.setSpan(new StyleSpan(Typeface.BOLD), 0, result.length(), 0); 
     			tvComments.setText("");
@@ -131,7 +131,6 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     	}
     }
 	
-	
 	private Context context;
 	public InstagramPhotosAdapter(Context context, List<InstagramPhoto> photos){
 		super(context, R.layout.item_photo, photos);
@@ -154,8 +153,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 			convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_photo, parent, false); // false mean don't attach
 			
 			// Step-3 - Lookup the subview within the template
-			//viewHolder.imageProfile = (CircularImageView)convertView.findViewById(R.id.imageProfile);
-			viewHolder.imageProfile = (ImageView)convertView.findViewById(R.id.imageProfile);
+			viewHolder.imageProfile = (CircularImageView)convertView.findViewById(R.id.imageProfile);
+			//viewHolder.imageProfile = (ImageView)convertView.findViewById(R.id.imageProfile);
 			viewHolder.tvUsername = (TextView)convertView.findViewById(R.id.tvUserName);
 			//viewHolder.tvLocation = (TextView)convertView.findViewById(R.id.tvLocation);
 			viewHolder.tvCaption = (TextView)convertView.findViewById(R.id.tvCaption);
