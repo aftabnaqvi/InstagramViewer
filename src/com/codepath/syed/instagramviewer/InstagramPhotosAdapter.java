@@ -32,6 +32,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     	private ImageView imagePhoto;
     	private ImageView imageTime;
     	private TextView tvTime;
+    	private TextView tvComments;
     	
     	private static Context context = null;
     	public void updateViewHolder(Context context, InstagramPhoto photo){
@@ -46,7 +47,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			result.setSpan(new StyleSpan(Typeface.BOLD), 0, result.length(), 0); 
     			tvCaption.setText("");
     			tvCaption.append(result);
-    			tvCaption.append(" -- " + photo.caption);
+    			if(photo.caption != null){
+    				tvCaption.append(" -- " + photo.caption);
+    			}
     		}
 
     		if(imageProfile != null){
@@ -94,6 +97,29 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			//Picasso.with(getContext()).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).centerInside().into(imagePhoto);
     			Picasso.with(context).load(photo.imageUrl).fit().centerInside().into(imagePhoto);
     		}
+    		
+    		if(tvComments != null){
+    		;
+
+    			SpannableString result =  new SpannableString("Comments:");
+    			result.setSpan(new StyleSpan(Typeface.BOLD), 0, result.length(), 0); 
+    			tvComments.setText("");
+    			tvComments.append(result);
+    			
+    			// I know there might be a better sol. but at this time I came up with this approach at the middle of the night.
+    			if(photo.comments.length == 2){
+    				String recentCommentTime = (String) DateUtils.getRelativeTimeSpanString(photo.comments[0].createdTime*1000, 
+    						System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
+    				String oldCommentTime = (String) DateUtils.getRelativeTimeSpanString(photo.comments[1].createdTime*1000, 
+    						System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
+    				
+    				tvComments.append("\n"+ recentCommentTime +": "+ photo.comments[0].comment + "\n" + oldCommentTime +": " + photo.comments[1].comment);
+    			} else if(photo.comments.length == 1){
+    				String recentCommentTime = (String) DateUtils.getRelativeTimeSpanString(photo.comments[0].createdTime*1000, 
+    						System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
+    				tvComments.append("\n"+ recentCommentTime +": " + photo.comments[0].comment);
+    			}
+    		}
     	}
     	
     	// not sure where to put this method.. for now leave it here.
@@ -137,8 +163,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
 			viewHolder.imagePhoto = (ImageView)convertView.findViewById(R.id.imagePhoto);
 			viewHolder.imageTime = (ImageView)convertView.findViewById(R.id.imageTime);
 			viewHolder.tvTime = (TextView)convertView.findViewById(R.id.tvTime);
-			
-			
+			viewHolder.tvComments = (TextView)convertView.findViewById(R.id.tvComments);
+
 			convertView.setTag(viewHolder);
 		}else {
 			viewHolder = (ViewHolder)convertView.getTag();

@@ -13,6 +13,7 @@
         android:layout_marginLeft="18dp"
         android:ellipsize="end"
         android:maxLines="3"
+        android:textSize="10sp"
         android:text="@string/caption_default_text" />
 
     <TextView
@@ -94,5 +95,16 @@
         android:paddingBottom="4dp"
         android:gravity="center_vertical"
         android:src="@drawable/clock_blue" />
+
+    <TextView
+        android:id="@+id/tvComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvCaption"
+        android:layout_below="@+id/tvCaption"
+        android:textColor="#0f71b4"
+        android:textSize="10sp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Comments" />
 
 </RelativeLayout>

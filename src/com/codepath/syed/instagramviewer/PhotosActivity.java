@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,12 +24,34 @@ public class PhotosActivity extends Activity {
 	public static String CLIENT_ID = "7ab161dcddf04d97905d5778c0875ab0";
 	private ArrayList<InstagramPhoto> photos;
 	private InstagramPhotosAdapter aPhotos;
+	private SwipeRefreshLayout swipeContainer;
 	
-    @Override
+    @SuppressWarnings("deprecation")
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
+        
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        
+     // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+            	fetchPopularPhotos();
+            } 
+        });
+        
         fetchPopularPhotos();
+        
+        // Configure the refreshing colors
+        swipeContainer.setColorScheme(android.R.color.holo_blue_bright, 
+                android.R.color.holo_green_light, 
+                android.R.color.holo_orange_light, 
+                android.R.color.holo_red_light);
     }
     private void fetchPopularPhotos(){
     	// Step - 1
@@ -100,10 +124,37 @@ public class PhotosActivity extends Activity {
     					photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
     					photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
     					photo.timeCreated = photoJSON.getInt("created_time");
+    					
+    					JSONArray commentsJSON = photoJSON.getJSONObject("comments").getJSONArray("data");
+    					//Log.i("INFO:", commentsJSON.toString());
+    					if(commentsJSON.length() >= 2){
+    						JSONObject commentJSON = (JSONObject) commentsJSON.get(commentsJSON.length() - 1);
+    						//Log.i("INFO:", commentJSON.toString());
+    						if(commentJSON != null){
+    							photo.comments[0].comment = commentJSON.getString("text");
+    							photo.comments[0].createdTime = commentJSON.getInt("created_time");
+    						}
+    						
+    						commentJSON = (JSONObject) commentsJSON.get(commentsJSON.length() - 2);
+    						//Log.i("INFO:", commentJSON.toString());
+    						if(commentJSON != null){
+    							photo.comments[1].comment = commentJSON.getString("text");
+    							photo.comments[1].createdTime = commentJSON.getInt("created_time");
+    						}
+    					} else if(commentsJSON.length() == 1) { // if we have only one comment then get that one.
+    						JSONObject commentJSON = (JSONObject) commentsJSON.get(commentsJSON.length() - 1);
+    						//Log.i("INFO:", commentJSON.toString());
+    						if(commentJSON != null){
+    							photo.comments[0].comment = commentJSON.getString("text");
+    							photo.comments[0].createdTime = commentJSON.getInt("created_time");
+    						}
+    					}
+    					
     					photos.add(photo);
     				}
     				// notify the adapter that it should populate new changes into the listview.
     				aPhotos.notifyDataSetChanged();
+    				swipeContainer.setRefreshing(false);
     			} catch(JSONException e){
     				// in case of error...
     				e.printStackTrace();
