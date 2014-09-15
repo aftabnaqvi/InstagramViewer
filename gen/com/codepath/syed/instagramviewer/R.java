@@ -23,19 +23,21 @@ public final class R {
         public static final int instagram_image_height=0x7f040002;
     }
     public static final class drawable {
-        public static final int heart=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
+        public static final int black_heart_likes=0x7f020000;
+        public static final int clock_blue=0x7f020001;
+        public static final int heart=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
     }
     public static final class id {
         public static final int action_settings=0x7f080008;
-        public static final int imageLike=0x7f080003;
-        public static final int imagePhoto=0x7f080004;
-        public static final int imageProfile=0x7f080006;
+        public static final int imagePhoto=0x7f080003;
+        public static final int imageProfile=0x7f080004;
+        public static final int imageTime=0x7f080007;
         public static final int lvPhotos=0x7f080000;
         public static final int tvCaption=0x7f080001;
         public static final int tvLikes=0x7f080002;
-        public static final int tvLocation=0x7f080005;
-        public static final int tvUserName=0x7f080007;
+        public static final int tvTime=0x7f080006;
+        public static final int tvUserName=0x7f080005;
     }
     public static final class layout {
         public static final int activity_photos=0x7f030000;

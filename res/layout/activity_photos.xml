@@ -13,7 +13,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:state_window_focused="false" >
-
     </ListView>
 
 </RelativeLayout>

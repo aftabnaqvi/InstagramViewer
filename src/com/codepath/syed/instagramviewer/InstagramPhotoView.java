@@ -56,11 +56,11 @@ public class InstagramPhotoView extends RelativeLayout {
     	
     	imageProfile = (ImageView)findViewById(R.id.imageProfile);
 		tvUsername = (TextView)findViewById(R.id.tvUserName);
-		tvLocation = (TextView)findViewById(R.id.tvLocation);
+		//tvLocation = (TextView)findViewById(R.id.tvLocation);
 		tvCaption = (TextView)findViewById(R.id.tvCaption);
 		tvlikes = (TextView)findViewById(R.id.tvLikes);
 		imagePhoto = (ImageView)findViewById(R.id.imagePhoto);
-		imageLike = (ImageView)findViewById(R.id.imageLike);
+		//imageLike = (ImageView)findViewById(R.id.imageLike);
     }
 
     public void setItem(InstagramPhoto photo) {

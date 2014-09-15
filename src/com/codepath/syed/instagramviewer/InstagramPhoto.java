@@ -1,8 +1,5 @@
 package com.codepath.syed.instagramviewer;
 
-import android.graphics.Point;
-import android.view.Display;
-
 public class InstagramPhoto {
 	// username, height, caption, image_url, likes_count;
 
@@ -13,6 +10,7 @@ public class InstagramPhoto {
 	public int imageHeight;
 	public int imageWidth;
 	public int likesCount;
+	public long timeCreated;
 	
 	public String toString(){
 		return "image - "+ imageUrl;

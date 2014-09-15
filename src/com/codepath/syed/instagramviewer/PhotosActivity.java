@@ -99,6 +99,7 @@ public class PhotosActivity extends Activity {
     					photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
     					photo.imageWidth = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width");
     					photo.likesCount = photoJSON.getJSONObject("likes").getInt("count");
+    					photo.timeCreated = photoJSON.getInt("created_time");
     					photos.add(photo);
     				}
     				// notify the adapter that it should populate new changes into the listview.
