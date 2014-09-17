@@ -40,6 +40,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			ViewHolder.context = context;
     		}
     		
+    		// Caption 
     		if(tvCaption!=null){
     			String userName = photo.username;
 
@@ -52,16 +53,21 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			}
     		}
 
+    		// Profile Image
     		if(imageProfile != null){
     			//Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
-    			Picasso.with(context).load(photo.imageProfileUrl).resize(imageProfile.getLayoutParams().width, 
-    					imageProfile.getLayoutParams().height).into(imageProfile);
+    			//Picasso.with(context).load(photo.imageProfileUrl).resize(imageProfile.getLayoutParams().width, 
+    					//imageProfile.getLayoutParams().height).into(imageProfile);
+    			
+    			Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
     		}
     		
+    		// username
     		if(tvUsername != null){
     			tvUsername.setText(photo.username);
     		}
     		
+    		// location: might use later.
     		if(tvLocation != null){
     			tvLocation.setText("Location comes here...");
     		}
@@ -69,14 +75,16 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     		if(tvlikes != null/* && imageLike != null*/){
     			tvlikes.setText("");
     			if(photo.likesCount > 1){
-    				tvlikes.setText(Html.fromHtml("&#9829").toString() + photo.likesCount + " likes");
+    				tvlikes.setText(Html.fromHtml("&#9829").toString() + " " + photo.likesCount + " likes");
     			}
     		}
     		
+    		// time image.
     		if(imageTime != null){
     			imageTime.setImageResource(R.drawable.clock_blue);
     		}
     		
+    		// elapsed time.
     		if(tvTime != null){
     			tvTime.setText(DateUtils.getRelativeTimeSpanString(photo.timeCreated*1000, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS));
     		}
@@ -84,18 +92,30 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     		// set the image height before loading
     		if(imagePhoto != null){
     			DisplayMetrics metrics = getDisplayMetrics();
-    			imagePhoto.getLayoutParams().height = metrics.heightPixels/2 * photo.imageWidth/photo.imageHeight; // first set the height
+    			int photoHeight = metrics.heightPixels/2;
+    			if(photo.imageHeight > metrics.heightPixels/2){
+    				photoHeight = metrics.heightPixels/2; 
+    			} else {
+    				photoHeight = photo.imageHeight;
+    			}
+    			
+    			// We need to adjust the height if the width of the bitmap is
+    			// smaller than the view width, otherwise the image will be boxed.
+    			final double viewWidthToBitmapWidthRatio = (double)photo.imageWidth / (double)photo.imageHeight;
+    			imagePhoto.getLayoutParams().height = photoHeight;//(int) (photo.imageHeight * viewWidthToBitmapWidthRatio);
+    			
+    			//imagePhoto.getLayoutParams().height = photoHeight; // metrics.heightPixels/2; // * photo.imageWidth/photo.imageHeight; // first set the height
     			imagePhoto.getLayoutParams().width = metrics.widthPixels; //  set the width
   
     			// clear the image from the image view, it might be the recycled imageView...
     			// Reset the image from the recycle view
     			imagePhoto.setImageResource(0);
     			
-    			// Ask for the photo to be added ot the imageView based on the photo url.
+    			// Ask for the photo to be added to the imageView based on the photo url.
     			// Background work: send a network request to the url, download the image bytes, covert into bitmap, 
     			// resizing the image, insert bitmap into the imageView
-    			//Picasso.with(getContext()).load(photo.imageUrl).into(imagePhoto);
-    			Picasso.with(context).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).into(imagePhoto);
+    			//Picasso.with(context).load(photo.imageUrl).into(imagePhoto);
+    			Picasso.with(context).load(photo.imageUrl).resize(metrics.widthPixels, photoHeight).into(imagePhoto); // working okay 
     			//Picasso.with(getContext()).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).centerInside().into(imagePhoto);
     			//Picasso.with(context).load(photo.imageUrl).fit().centerInside().into(imagePhoto);
     		}

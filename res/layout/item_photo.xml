@@ -38,7 +38,8 @@
         app:selector_stroke_color="#88FF8800"
         app:selector_stroke_width="4dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"/>
+        android:paddingTop="3dp"
+        android:scaleType="centerCrop"/>
 
 	<!--  <ImageView
         android:id="@+id/imageProfile"
@@ -80,7 +81,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="14dp"
         android:textSize="8sp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="7dp"
         android:layout_marginLeft="4dp"
         android:gravity="center_vertical"
         android:textColor="#0f71b4"
@@ -92,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tvTime"
         android:layout_toLeftOf="@+id/tvTime"
-        android:paddingBottom="7dp"
+        android:paddingBottom="6dp"
         android:gravity="center_vertical"
         android:src="@drawable/clock_blue" />
 
