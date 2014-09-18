@@ -133,6 +133,7 @@ public class PhotosActivity extends Activity {
     						if(commentJSON != null){
     							photo.comments[0].comment = commentJSON.getString("text");
     							photo.comments[0].createdTime = commentJSON.getInt("created_time");
+    							photo.comments[0].username = commentJSON.getJSONObject("from").getString("username");
     						}
     						
     						commentJSON = (JSONObject) commentsJSON.get(commentsJSON.length() - 2);
@@ -140,6 +141,7 @@ public class PhotosActivity extends Activity {
     						if(commentJSON != null){
     							photo.comments[1].comment = commentJSON.getString("text");
     							photo.comments[1].createdTime = commentJSON.getInt("created_time");
+    							photo.comments[1].username = commentJSON.getJSONObject("from").getString("username");
     						}
     					} else if(commentsJSON.length() == 1) { // if we have only one comment then get that one.
     						JSONObject commentJSON = (JSONObject) commentsJSON.get(commentsJSON.length() - 1);
@@ -147,6 +149,7 @@ public class PhotosActivity extends Activity {
     						if(commentJSON != null){
     							photo.comments[0].comment = commentJSON.getString("text");
     							photo.comments[0].createdTime = commentJSON.getInt("created_time");
+    							photo.comments[0].username = commentJSON.getJSONObject("from").getString("username");
     						}
     					}
     					

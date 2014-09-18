@@ -5,6 +5,7 @@ public class InstagramPhoto {
 	class Comments{
 		String comment;
 		long createdTime;
+		String username;
 	}
 	public String username;
 	public String caption;

@@ -38,8 +38,7 @@
         app:selector_stroke_color="#88FF8800"
         app:selector_stroke_width="4dp"
         android:adjustViewBounds="true"
-        android:paddingTop="3dp"
-        android:scaleType="centerCrop"/>
+        android:paddingTop="3dp"/>
 
 	<!--  <ImageView
         android:id="@+id/imageProfile"
@@ -65,12 +64,12 @@
 
     <ImageView
         android:id="@+id/imagePhoto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/imageProfile"
         android:adjustViewBounds="true"
-        android:scaleType="fitXY"
+        android:scaleType="centerCrop"
         android:src="@drawable/ic_launcher" />
 
     <TextView

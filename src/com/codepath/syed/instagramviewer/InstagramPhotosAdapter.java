@@ -56,10 +56,10 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     		// Profile Image
     		if(imageProfile != null){
     			//Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
-    			//Picasso.with(context).load(photo.imageProfileUrl).resize(imageProfile.getLayoutParams().width, 
-    					//imageProfile.getLayoutParams().height).into(imageProfile);
+    			Picasso.with(context).load(photo.imageProfileUrl).resize(imageProfile.getLayoutParams().width, 
+    					imageProfile.getLayoutParams().height).into(imageProfile);
     			
-    			Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
+    			//Picasso.with(context).load(photo.imageProfileUrl).into(imageProfile);
     		}
     		
     		// username
@@ -102,7 +102,7 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			// We need to adjust the height if the width of the bitmap is
     			// smaller than the view width, otherwise the image will be boxed.
     			final double viewWidthToBitmapWidthRatio = (double)photo.imageWidth / (double)photo.imageHeight;
-    			imagePhoto.getLayoutParams().height = photoHeight;//(int) (photo.imageHeight * viewWidthToBitmapWidthRatio);
+    			imagePhoto.getLayoutParams().height = photoHeight*(int)viewWidthToBitmapWidthRatio;
     			
     			//imagePhoto.getLayoutParams().height = photoHeight; // metrics.heightPixels/2; // * photo.imageWidth/photo.imageHeight; // first set the height
     			imagePhoto.getLayoutParams().width = metrics.widthPixels; //  set the width
@@ -115,11 +115,14 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			// Background work: send a network request to the url, download the image bytes, covert into bitmap, 
     			// resizing the image, insert bitmap into the imageView
     			//Picasso.with(context).load(photo.imageUrl).into(imagePhoto);
-    			Picasso.with(context).load(photo.imageUrl).resize(metrics.widthPixels, photoHeight).into(imagePhoto); // working okay 
+    			Picasso.with(context).load(photo.imageUrl).resize(metrics.widthPixels, imagePhoto.getLayoutParams().height).into(imagePhoto); // working okay 
+    			
+    			// few other tries... 
     			//Picasso.with(getContext()).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).centerInside().into(imagePhoto);
     			//Picasso.with(context).load(photo.imageUrl).fit().centerInside().into(imagePhoto);
     		}
     		
+    		// Comments
     		if(tvComments != null){
     			SpannableString result =  new SpannableString("Comments:");
     			result.setSpan(new StyleSpan(Typeface.BOLD), 0, result.length(), 0); 
@@ -133,11 +136,12 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     				String oldCommentTime = (String) DateUtils.getRelativeTimeSpanString(photo.comments[1].createdTime*1000, 
     						System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
     				
-    				tvComments.append("\n"+ recentCommentTime +": "+ photo.comments[0].comment + "\n" + oldCommentTime +": " + photo.comments[1].comment);
+    				tvComments.append("\n"+ photo.comments[0].username + " said (" + recentCommentTime +"): "+ 
+    				photo.comments[0].comment + "\n" + photo.comments[1].username + " said (" +oldCommentTime +"): " + photo.comments[1].comment);
     			} else if(photo.comments.length == 1){
     				String recentCommentTime = (String) DateUtils.getRelativeTimeSpanString(photo.comments[0].createdTime*1000, 
     						System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS);
-    				tvComments.append("\n"+ recentCommentTime +": " + photo.comments[0].comment);
+    				tvComments.append("\n"+ photo.comments[0].username + " said (" + recentCommentTime +"): " + photo.comments[0].comment);
     			}
     		}
     	}
