@@ -120,6 +120,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto> {
     			// few other tries... 
     			//Picasso.with(getContext()).load(photo.imageUrl).resize(metrics.widthPixels, metrics.heightPixels/2).centerInside().into(imagePhoto);
     			//Picasso.with(context).load(photo.imageUrl).fit().centerInside().into(imagePhoto);
+    			
+    			//Picasso.with(context).load(photo.imageUrl).
     		}
     		
     		// Comments

@@ -32,6 +32,21 @@ public class PhotosActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photos);
         
+        // Step - 1
+    	photos = new ArrayList<InstagramPhoto>(); // initialize arraylist.
+    	
+    	// Step - 2
+    	//Create adapter, bind it to the data in arraylist.
+    	aPhotos = new InstagramPhotosAdapter(this, photos);
+    	
+    	// Step - 3
+    	// populate the data into the listview
+    	ListView lvPhotos = (ListView)findViewById(R.id.lvPhotos);
+    	
+    	// Step - 4
+    	// Set the adapter to the listView (population of items)
+    	lvPhotos.setAdapter(aPhotos);
+    	
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
         
      // Setup refresh listener which triggers new data loading
@@ -54,21 +69,6 @@ public class PhotosActivity extends Activity {
                 android.R.color.holo_red_light);
     }
     private void fetchPopularPhotos(){
-    	// Step - 1
-    	photos = new ArrayList<InstagramPhoto>(); // initialize arraylist.
-    	
-    	// Step - 2
-    	//Create adapter, bind it to the data in arraylist.
-    	aPhotos = new InstagramPhotosAdapter(this, photos);
-    	
-    	// Step - 3
-    	// populate the data into the listview
-    	ListView lvPhotos = (ListView)findViewById(R.id.lvPhotos);
-    	
-    	// Step - 4
-    	// Set the adapter to the listView (population of items)
-    	lvPhotos.setAdapter(aPhotos);
-    	
     	//https://api.instagram.com/v1/media/popular?client_id=7ab161dcddf04d97905d5778c0875ab0
     	//https://api.instagram.com/v1/media/popular?client_id=<client_id>
     	// {"data" => [x] => "images" => "standard_resolution" => "url"}
